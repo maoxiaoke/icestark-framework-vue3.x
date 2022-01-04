@@ -1,25 +1,12 @@
 import { createApp } from 'vue'
-import type { App as Root} from 'vue';
-import isInIcestark from '@ice/stark-app/lib/isInIcestark';
 import App from './App.vue'
+import ElementPlus from 'element-plus'
 import router from './router';
+import 'element-plus/dist/index.css'
 
-let vue: Root<Element> | null = null;
+const vue = createApp(App);
+vue.use(router);
+// @ts-ignore
+vue.use(ElementPlus);
 
-if (!isInIcestark ()) {
-  vue = createApp(App);
-  vue.use(router);
-  vue.mount('#app');
-}
-
-export function mount({ container }: { container: Element}) {
-  vue = createApp(App);
-  vue.use(router);
-  vue.mount(container);
-}
-
-export function unmount() {
-  if (vue) {
-    vue.unmount();
-  }
-}
+vue.mount('#app');

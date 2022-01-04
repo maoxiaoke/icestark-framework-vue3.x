@@ -1,4 +1,4 @@
-# Vite + icestark + vue3 Demo
+# Vite + icestark + vue3 框架应用
 
 Demo for building icestark micro applications created by Vite.
 

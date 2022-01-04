@@ -1,23 +1,35 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HelloWorld from './components/HelloWorld.vue'
-import List from './components/List.vue'
-import isInIcestark from '@ice/stark-app/lib/isInIcestark';
-import getBasename from '@ice/stark-app/lib/getBasename';
+import Home from './pages/Home.vue';
+import About from './pages/About.vue';
+import Login from './pages/Login.vue';
+import NotFound from './pages/NotFound.vue';
 
 // https://zhuanlan.zhihu.com/p/138444490
-
-const routerHistory = createWebHistory( isInIcestark() ? getBasename() : '/' )
+const routerHistory = createWebHistory()
 
 const router = createRouter({
   history: routerHistory,
   routes: [
     {
       path: '/',
-      component: HelloWorld
+      name: 'home',
+      component: Home
     },
     {
-      path: '/list',
-      component: List
+      path: '/about',
+      name: 'about',
+      component: About,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+    },
+    {
+      path: '/:pathMatch(.*)',
+      name: 'notfound',
+      component: NotFound,
     }
   ]
 })
